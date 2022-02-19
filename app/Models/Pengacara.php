@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Pengacara extends Model
+{
+    use HasFactory;
+
+    protected $table = 'pengacara';
+    protected $fillable = ['nama', 'email', 'jabatan', 'whatsapp', 'instagram', 'image', 'link'];
+}
