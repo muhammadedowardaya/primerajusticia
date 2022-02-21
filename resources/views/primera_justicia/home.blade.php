@@ -20,8 +20,8 @@
                 <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative aos-init aos-animate"
                     data-aos="zoom-in" data-aos-delay="200">
                     <!-- <a href="https://www.youtube.com/watch?v=CX-NKdY-_Tc&amp;feature=youtu.be"
-                                    class="glightbox play-btn">
-                            </a> -->
+                                            class="glightbox play-btn">
+                                    </a> -->
                     @if (isset($profile->link_video))
                         <a href="{{ $profile->link_video }}"></a>
                     @else
@@ -498,9 +498,9 @@
 
             <!-- google maps -->
             <!-- <div data-aos="fade-up" class="aos-init">
-                                <iframe style="border:0; width: 100%; height: 350px;"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3106442569797!2d106.80850601449572!3d-6.482285665181251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c3691f4eb795%3A0x259c530712368cd!2sKANTOR%20HUKUM%20SYLVIA%20ANWAR%20%26%20REKAN%20(SAR%20LAW%20OFFICE)!5e0!3m2!1sid!2sid!4v1627379791959!5m2!1sid!2sid" frameborder="0" allowfullscreen=""></iframe>
-                            </div> -->
+                                        <iframe style="border:0; width: 100%; height: 350px;"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3106442569797!2d106.80850601449572!3d-6.482285665181251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c3691f4eb795%3A0x259c530712368cd!2sKANTOR%20HUKUM%20SYLVIA%20ANWAR%20%26%20REKAN%20(SAR%20LAW%20OFFICE)!5e0!3m2!1sid!2sid!4v1627379791959!5m2!1sid!2sid" frameborder="0" allowfullscreen=""></iframe>
+                                    </div> -->
             <div class="container aos-init" data-aos="fade-up">
                 <div class="row mt-5">
                     <div class="col-lg-4">
@@ -543,13 +543,22 @@
                                 </div>
                             @endif
 
+                            @if (isset($profile->phone))
+                                <div class="phone">
+                                    <i class="bi bi-phone"></i>
+                                    <h4>Call:</h4>
+                                    <p>{{ $profile->phone }}
+                                    </p>
+                                </div>
+                            @else
+                                <div class="phone">
+                                    <i class="bi bi-phone"></i>
+                                    <h4>Call:</h4>
+                                    <p>(021) 8371 5287
+                                    </p>
+                                </div>
+                            @endif
 
-                            <div class="phone">
-                                <i class="bi bi-phone"></i>
-                                <h4>Call:</h4>
-                                <p>(021) 8371 5287
-                                </p>
-                            </div>
 
                         </div>
 
