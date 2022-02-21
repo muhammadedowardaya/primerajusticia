@@ -16,7 +16,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() || auth()->user()->name !== 'Edo') {
+        if (auth()->check() || auth()->user()->name !== 'Primera') {
             return abort(404);
         }
         return $next($request);

@@ -16,8 +16,6 @@
     @else
 
         <body>
-
-
 @endif
 
 
@@ -31,8 +29,9 @@
             <button class="signinBtn">Sign in</button>
         </div>
         <div class="box signup">
-            <h2>Don't Have an Account ?</h2>
-            <button class="signupBtn">Sign up</button>
+            {{-- <h2>Don't Have an Account ?</h2>
+            <button class="signupBtn">Sign up</button> --}}
+            <h2>Primera Justicia</h2>
         </div>
     </div>
     @if (session()->has('gagalRegistrasi'))
@@ -60,7 +59,7 @@
                 </div>
             @enderror
             <input type="submit" value="Login" />
-            <a href="#" class="forgot">Forgot Password</a>
+            {{-- <a href="#" class="forgot">Forgot Password</a> --}}
         </form>
     </div>
 

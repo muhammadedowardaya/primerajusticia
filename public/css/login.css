@@ -144,6 +144,7 @@ body.active {
 
 .formBx.active .signupForm input[type="submit"] {
     background: #f43648;
+    margin-top: 20px;
 }
 
 .formBx .form form .forgot {
@@ -194,4 +195,27 @@ body.active {
         left: 0;
         top: 150px;
     }
+}
+
+.radio {
+    /* border: 1px solid black; */
+    font-size: 0.8em;
+}
+
+.radio .pilihan {
+    /* border: 1px solid #999; */
+    display: flex;
+    width: 200px;
+    align-content: center;
+    align-items: center;
+    height: 30px;
+}
+
+.radio .pilihan input {
+    /* margin: 0; */
+    margin-top: 20px;
+}
+
+.radio .pilihan label {
+    width: 80px;
 }

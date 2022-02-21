@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AdminBantuanHukumController, AdminCategoryController, AdminGalleryController, AdminGambarController, AdminPengacaraController, CategoryController, DashboardPostController, GalleryController, HimatikaController, PostController};
+use App\Http\Controllers\{AdminBantuanHukumController, AdminCategoryController, AdminGalleryController, AdminGambarController, AdminPengacaraController, AdminProfileController, CategoryController, DashboardPostController, GalleryController, PrimeraJusticiaController, PostController};
 use App\Http\Controllers\{LoginController, RegisterController};
 
 use App\Models\{Category, User, Post};
@@ -20,22 +20,22 @@ use Illuminate\Support\Facades\View;
 
 
 // Himatika Profile
-Route::get('/', [HimatikaController::class, 'index'])->name('himatika.index');
+Route::get('/', [PrimeraJusticiaController::class, 'index'])->name('himatika.index');
 
-Route::get('/about', function () {
-    return view('himatika.about');
-})->name('himatika.about');
+// Route::get('/about', function () {
+//     return view('himatika.about');
+// })->name('himatika.about');
 
-Route::get('/organization', function () {
-    return view('himatika.organization');
-})->name('himatika.organization');
+// Route::get('/organization', function () {
+//     return view('himatika.organization');
+// })->name('himatika.organization');
 
-Route::get('/post/{category:name}', function (Category $category) {
-    $data = [
-        'events' => $category->posts()->latest()->paginate(6)
-    ];
-    return view('himatika.event', $data);
-});
+// Route::get('/post/{category:name}', function (Category $category) {
+//     $data = [
+//         'events' => $category->posts()->latest()->paginate(6)
+//     ];
+//     return view('himatika.event', $data);
+// });
 
 
 // Login--------------------------------
@@ -44,7 +44,8 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // Register------------------------------
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register');
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store'])->middleware('auth')->name('register');
 
 // Dashboard-----------------------------
 Route::get('/dashboard', function () {
@@ -97,6 +98,10 @@ Route::post('/dashboard/gambar/getUbah', [AdminGambarController::class, 'getUbah
 // Admin Bantuan Hukum
 Route::resource('/dashboard/bantuan', AdminBantuanHukumController::class)->except('show')->middleware('auth');
 Route::post('/dashboard/bantuan/getUbah', [AdminBantuanHukumController::class, 'getUbah'])->name('bantuan.getUbah')->middleware('auth');
+
+// Admin Profile
+Route::resource('/dashboard/profile', AdminProfileController::class)->except('show')->middleware('auth');
+Route::post('/dashboard/profile/getUbah', [AdminProfileController::class, 'getUbah'])->name('profile.getUbah')->middleware('auth');
 
 // Author
 Route::get('authors/{author:username}', function (User $author) {

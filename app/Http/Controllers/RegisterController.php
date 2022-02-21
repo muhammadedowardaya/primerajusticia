@@ -16,7 +16,18 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        // return redirect('/login')->with('status', 'active');
+        // if (auth()->user()->is_admin == null) {
+        //     return redirect('/login');
+        // } else if (auth()->user()->is_admin == 1) {
+        //     return view('auth/register');
+        // } else {
+        //     return redirect()->to('/');
+        // }
+        if (auth()->user()->is_admin == 1) {
+            return view('auth/register');
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -44,6 +55,7 @@ class RegisterController extends Controller
             'username' => 'required|min:3|max:255|unique:users',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'required|min:5|max:255',
+            'is_admin' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -59,6 +71,7 @@ class RegisterController extends Controller
                 'username' => 'required|min:3|max:255|unique:users',
                 'email' => 'required|email|unique:users,email,' . $user->id,
                 'password' => 'required|min:5|max:255',
+                'is_admin' => 'required',
             ]);
             $validatedData['password'] = Hash::make($validatedData['password']);
             User::create($validatedData);

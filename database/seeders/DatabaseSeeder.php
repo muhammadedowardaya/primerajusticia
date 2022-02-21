@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\{Category, Gambar, User, Post};
+use App\Models\{Category, Gambar, User, Post, Profile};
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Muhammad Edo Wardaya',
-            'username' => 'Edo',
-            'email' => 'muhammadedowarday4@gmail.com',
-            'password' => bcrypt('303warday4'),
+            'name' => 'Primera Justicia',
+            'username' => 'Primera',
+            'email' => 'primerajusticia@gmail.com',
+            'password' => bcrypt('primerajustice14'),
             'is_admin' => 1
         ]);
         // User::factory(3)->create();
@@ -40,10 +40,18 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Gambar::create([
-            'id' => 1,
+            'id' => 303,
             'hero' => '',
             'bg_about' => '',
             'about' => ''
+        ]);
+
+        Profile::create([
+            'id' => 303,
+            'alamat' => 'alamat',
+            'email' => 'email@gmail.com',
+            'phone' => '088809090909',
+            'link_video' => 'https://www.youtube.com/watch?v=AiPDZErbZ6I'
         ]);
     }
 }

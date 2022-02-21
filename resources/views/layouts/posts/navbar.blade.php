@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="/">Himatika</a>
+        <a class="navbar-brand" href="/">Primera Justicia</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,8 @@
                             Welcome back, {{ auth()->user()->username }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/dashboard"><i class="bi bi-layout-text-window-reverse"></i>
+                            <li><a class="dropdown-item" href="/dashboard">
+                                    {{-- <i class="bi bi-layout-text-window-reverse"></i> --}}
                                     My
                                     Dashboard</a></li>
                             <li>

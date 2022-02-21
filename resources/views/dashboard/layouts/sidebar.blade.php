@@ -73,7 +73,8 @@
 
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link{{ request()->is('dashboard/profile') ? ' active' : '' }}" href="/">
+                    <a class="nav-link{{ request()->is('dashboard/profile') ? ' active' : '' }}"
+                        href="/dashboard/profile">
                         <span data-feather="grid"></span>
                         Profile Perusahaan
                     </a>

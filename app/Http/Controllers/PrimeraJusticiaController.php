@@ -11,7 +11,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Foreach_;
 
-class HimatikaController extends Controller
+class PrimeraJusticiaController extends Controller
 {
     public function index()
     {

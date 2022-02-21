@@ -20,9 +20,15 @@
                 <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative aos-init aos-animate"
                     data-aos="zoom-in" data-aos-delay="200">
                     <!-- <a href="https://www.youtube.com/watch?v=CX-NKdY-_Tc&amp;feature=youtu.be"
-                                                                                                                                                                                                                                                                                                                                class="glightbox play-btn"></a> -->
-                    <a href="https://www.youtube.com/watch?v=N-iGaRaqXbE&list=PLJn69VMQAr8oMLfFgStCGZNK4foJL9uyS&index=193"
-                        class="glightbox play-btn"></a>
+                                    class="glightbox play-btn">
+                            </a> -->
+                    @if (isset($profile->link_video))
+                        <a href="{{ $profile->link_video }}"></a>
+                    @else
+                        <a href="https://www.youtube.com/watch?v=N-iGaRaqXbE&list=PLJn69VMQAr8oMLfFgStCGZNK4foJL9uyS&index=193"
+                            class="glightbox play-btn"></a>
+                    @endif
+
                 </div>
 
             </div>
@@ -492,23 +498,28 @@
 
             <!-- google maps -->
             <!-- <div data-aos="fade-up" class="aos-init">
-                                                                                                                                                                                                                                                                                                                        <iframe style="border:0; width: 100%; height: 350px;"
-                                                                                                                                                                                                                                                                                                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3106442569797!2d106.80850601449572!3d-6.482285665181251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c3691f4eb795%3A0x259c530712368cd!2sKANTOR%20HUKUM%20SYLVIA%20ANWAR%20%26%20REKAN%20(SAR%20LAW%20OFFICE)!5e0!3m2!1sid!2sid!4v1627379791959!5m2!1sid!2sid"
-                                                                                                                                                                                                                                                                                                                            frameborder="0" allowfullscreen=""></iframe>
-                                                                                                                                                                                                                                                                                                                    </div> -->
-
+                                <iframe style="border:0; width: 100%; height: 350px;"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3106442569797!2d106.80850601449572!3d-6.482285665181251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c3691f4eb795%3A0x259c530712368cd!2sKANTOR%20HUKUM%20SYLVIA%20ANWAR%20%26%20REKAN%20(SAR%20LAW%20OFFICE)!5e0!3m2!1sid!2sid!4v1627379791959!5m2!1sid!2sid" frameborder="0" allowfullscreen=""></iframe>
+                            </div> -->
             <div class="container aos-init" data-aos="fade-up">
-
                 <div class="row mt-5">
-
                     <div class="col-lg-4">
                         <div class="info">
-                            <div class="address">
-                                <i class="bi bi-geo-alt"></i>
-                                <h4>Location:</h4>
-                                <p>Ruko Graha Kartika Pratama, Blok A, No.8, Jalan Tegar Beriman, <br> Pemda Kabupaten
-                                    Bogor,, Bojong Baru, Kec. Bojong Gede, Bogor, Jawa Barat 16920</p>
-                            </div>
+
+                            @if (isset($profile->alamat))
+                                <div class="address">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <h4>Location:</h4>
+                                    <p>{{ $profile->alamat }}</p>
+                                </div>
+                            @else
+                                <div class="address">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <h4>Location:</h4>
+                                    <p>Ruko Graha Kartika Pratama, Blok A, No.8, Jalan Tegar Beriman, <br> Pemda Kabupaten
+                                        Bogor,, Bojong Baru, Kec. Bojong Gede, Bogor, Jawa Barat 16920</p>
+                                </div>
+                            @endif
 
                             <div class="open-hours">
                                 <i class="bi bi-clock"></i>
@@ -518,11 +529,20 @@
                                 </p>
                             </div>
 
-                            <div class="email">
-                                <i class="bi bi-envelope"></i>
-                                <h4>Email:</h4>
-                                <p>primerajusticia@gmail.com</p>
-                            </div>
+                            @if (isset($profile->email))
+                                <div class="email">
+                                    <i class="bi bi-envelope"></i>
+                                    <h4>Email :</h4>
+                                    <p>{{ $profile->email }}</p>
+                                </div>
+                            @else
+                                <div class="email">
+                                    <i class="bi bi-envelope"></i>
+                                    <h4>Email :</h4>
+                                    <p>primerajusticia@gmail.com</p>
+                                </div>
+                            @endif
+
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
@@ -584,12 +604,20 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-info">
                             <h3>Primera Justicia</h3>
-                            <p>
-                                Ruko Graha Kartika Pratama, Blok A, No.8, Jalan Tegar Beriman, <br> Pemda Kabupaten
-                                Bogor,, Bojong Baru, Kec. Bojong Gede, Bogor, Jawa Barat 16920<br><br>
-                                <strong>Phone:</strong> (021) 8371 5287<br>
-                                <strong>Email:</strong> primerajusticia@gmail.com<br>
-                            </p>
+                            @if (isset($profile))
+                                <p>
+                                    {{ $profile->alamat }} <br>
+                                    <strong>Phone :</strong> {{ $profile->phone }} <br>
+                                    <strong>Email :</strong> {{ $profile->email }} <br>
+                                </p>
+                            @else
+                                <p>
+                                    Ruko Graha Kartika Pratama, Blok A, No.8, Jalan Tegar Beriman, <br> Pemda Kabupaten
+                                    Bogor,, Bojong Baru, Kec. Bojong Gede, Bogor, Jawa Barat 16920<br><br>
+                                    <strong>Phone:</strong> (021) 8371 5287<br>
+                                    <strong>Email:</strong> primerajusticia@gmail.com<br>
+                                </p>
+                            @endif
                             <div class="social-links mt-3">
                                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
