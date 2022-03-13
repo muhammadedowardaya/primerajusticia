@@ -20,10 +20,10 @@
                 <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative aos-init aos-animate"
                     data-aos="zoom-in" data-aos-delay="200">
                     <!-- <a href="https://www.youtube.com/watch?v=CX-NKdY-_Tc&amp;feature=youtu.be"
-                                            class="glightbox play-btn">
-                                    </a> -->
+                                                                                                        class="glightbox play-btn">
+                                                                                                </a> -->
                     @if (isset($profile->link_video))
-                        <a href="{{ $profile->link_video }}"></a>
+                        <a href="{{ $profile->link_video }}" class="glightbox play-btn"></a>
                     @else
                         <a href="https://www.youtube.com/watch?v=N-iGaRaqXbE&list=PLJn69VMQAr8oMLfFgStCGZNK4foJL9uyS&index=193"
                             class="glightbox play-btn"></a>
@@ -271,6 +271,8 @@
             </div>
         </section>
         <!-- End Specials Section -->
+
+
         <!-- ======= Book A Table Section ======= -->
         <section id="book-a-table" class="book-a-table">
             <div class="container aos-init" data-aos="fade-up">
@@ -280,11 +282,12 @@
                     <p>Janji Temu</p>
                 </div>
 
-                <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form aos-init"
+                <form action="{{ route('contact') }}" method="post" role="form" class="php-email-form aos-init"
                     data-aos="fade-up" data-aos-delay="100">
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-lg-4 col-md-6 form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Nama anda"
+                            <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama anda"
                                 data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                             <div class="validate"></div>
                         </div>
@@ -294,13 +297,12 @@
                             <div class="validate"></div>
                         </div>
                         <div class=" col-lg-4 col-md-6 form-group mt-3 mt-md-0 ">
-                            <input type=" text " class=" form-control " name=" phone" id="phone"
-                                placeholder=" Nomor Telpon " data-rule=" minlen:4 "
-                                data-msg=" Please enter at least 4 chars ">
+                            <input type=" text " class=" form-control " name="phone" id="phone" placeholder=" Nomor Telpon "
+                                data-rule=" minlen:4 " data-msg=" Please enter at least 4 chars ">
                             <div class=" validate "></div>
                         </div>
                         <div class=" form-group mt-3 ">
-                            <textarea class=" form-control id=" message"="" "="" name=" message" rows=" 5 "
+                            <textarea class=" form-control" id="message" name="message" rows=" 5 "
                                 placeholder=" Ceritakan Masalah Hukum Anda "></textarea>
                             <div class=" validate "></div>
                         </div>
@@ -317,6 +319,10 @@
             </div>
         </section>
         <!-- End Book A Table Section -->
+
+
+
+
         <!-- ======= Testimonials Section ======= -->
         <!--<section id=" testimonials" class="testimonials section-bg">-->
         <!--              <div class="container" data-aos="fade-up">-->
@@ -498,9 +504,9 @@
 
             <!-- google maps -->
             <!-- <div data-aos="fade-up" class="aos-init">
-                                        <iframe style="border:0; width: 100%; height: 350px;"
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3106442569797!2d106.80850601449572!3d-6.482285665181251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c3691f4eb795%3A0x259c530712368cd!2sKANTOR%20HUKUM%20SYLVIA%20ANWAR%20%26%20REKAN%20(SAR%20LAW%20OFFICE)!5e0!3m2!1sid!2sid!4v1627379791959!5m2!1sid!2sid" frameborder="0" allowfullscreen=""></iframe>
-                                    </div> -->
+                                                                                                    <iframe style="border:0; width: 100%; height: 350px;"
+                                                                                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3106442569797!2d106.80850601449572!3d-6.482285665181251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c3691f4eb795%3A0x259c530712368cd!2sKANTOR%20HUKUM%20SYLVIA%20ANWAR%20%26%20REKAN%20(SAR%20LAW%20OFFICE)!5e0!3m2!1sid!2sid!4v1627379791959!5m2!1sid!2sid" frameborder="0" allowfullscreen=""></iframe>
+                                                                                                </div> -->
             <div class="container aos-init" data-aos="fade-up">
                 <div class="row mt-5">
                     <div class="col-lg-4">
@@ -558,15 +564,11 @@
                                     </p>
                                 </div>
                             @endif
-
-
                         </div>
-
                     </div>
 
                     <div class="col-lg-8 mt-5 mt-lg-0">
-
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form action="/contact" method="post" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
@@ -592,11 +594,8 @@
                             </div>
                             <div class="text-center"><button type="submit">Send Message</button></div>
                         </form>
-
                     </div>
-
                 </div>
-
             </div>
         </section>
         <!-- End Contact Section -->

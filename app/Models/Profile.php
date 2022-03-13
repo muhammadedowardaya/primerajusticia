@@ -10,5 +10,5 @@ class Profile extends Model
     use HasFactory;
 
     protected $table = "profile";
-    protected $fillable = ['alamat', 'email', 'link_video', 'phone'];
+    protected $fillable = ['nama', 'alamat', 'email', 'link_video', 'phone'];
 }

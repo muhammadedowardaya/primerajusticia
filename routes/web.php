@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{AdminBantuanHukumController, AdminCategoryController, AdminGalleryController, AdminGambarController, AdminPengacaraController, AdminProfileController, CategoryController, DashboardPostController, GalleryController, PrimeraJusticiaController, PostController};
+use App\Http\Controllers\{AdminBantuanHukumController, AdminCategoryController, AdminGalleryController, AdminGambarController, AdminPengacaraController, AdminProfileController, CategoryController, ContactController, DashboardPostController, GalleryController, PrimeraJusticiaController, PostController};
 use App\Http\Controllers\{LoginController, RegisterController};
 
 use App\Models\{Category, User, Post};
@@ -46,6 +46,10 @@ Route::post('/logout', [LoginController::class, 'logout']);
 // Register------------------------------
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store'])->middleware('auth')->name('register');
+
+// Contact
+Route::post('/contact', [ContactController::class, 'sendMail'])->name('contact');
+
 
 // Dashboard-----------------------------
 Route::get('/dashboard', function () {

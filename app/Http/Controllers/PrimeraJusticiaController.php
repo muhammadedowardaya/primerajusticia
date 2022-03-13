@@ -8,6 +8,7 @@ use App\Models\Gallery;
 use App\Models\Gambar;
 use App\Models\Pengacara;
 use App\Models\Post;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Foreach_;
 
@@ -17,6 +18,7 @@ class PrimeraJusticiaController extends Controller
     {
         $data = [
             'galleries' => Gallery::all(),
+            'profile' => Profile::first(),
             'pengacara' => Pengacara::all(),
             'bantuans' => BantuanHukum::all(),
             'gambar' => Gambar::first()

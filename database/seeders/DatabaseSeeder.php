@@ -48,8 +48,10 @@ class DatabaseSeeder extends Seeder
 
         Profile::create([
             'id' => 303,
+            'nama' => 'Primera Justicia',
             'alamat' => 'alamat',
             'email' => 'email@gmail.com',
+            'password' => 'password',
             'phone' => '088809090909',
             'link_video' => 'https://www.youtube.com/watch?v=AiPDZErbZ6I'
         ]);

@@ -6,14 +6,14 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-10">
             <div class="table-responsive">
                 <!-- Button trigger modal -->
                 {{-- <button type="button" class="btn btn-primary mb-4" id="btnProfile" data-bs-toggle="modal"
                     data-bs-target="#profileModal">
                     Create New Profile
                 </button> --}}
-                <table class="table table-striped table-md">
+                <table class="table table-striped">
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
                             <p style="color:red;">
@@ -24,9 +24,11 @@
                     <thead>
                         <tr>
                             {{-- <th scope="col">No</th> --}}
+                            <th scope="col">Nama</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Password</th>
                             <th scope="col">Link Video</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -35,9 +37,11 @@
                         @if (isset($profile))
                             <tr id="{{ $profile->id }}">
                                 {{-- <td scope="row">{{ $posts->perPage() * ($posts->currentPage() - 1) + $loop->iteration }}</td> --}}
+                                <td>{{ $profile->nama ?? '' }}</td>
                                 <td>{{ $profile->alamat ?? '' }}</td>
                                 <td>{{ $profile->phone ?? '' }}</td>
                                 <td>{{ $profile->email ?? '' }}</td>
+                                <td>{{ $profile->password ?? '' }}</td>
                                 <td>{{ $profile->link_video ?? '' }}</td>
                                 <td>
                                     <button id="btnEditProfile" class="badge bg-warning border-0"
@@ -92,6 +96,16 @@
                         <input type="hidden" name="_method" value="post" id="method">
                         {{-- <input type="hidden" name="oldImage" value="{{ $profile->image ?? '' }}" id="oldImage"> --}}
                         <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
+                                value="{{ old('nama') }}" name="nama" placeholder="Akan dijadikan nama pengirim email">
+                            @error('nama')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
                             <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat"
                                 value="{{ old('alamat') }}" name="alamat">
@@ -104,8 +118,19 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                                value="{{ old('email') }}" name="email">
+                                value="{{ old('email') }}" name="email" placeholder="Akan dijadikan email pengirim">
                             @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                id="password" value="{{ old('password') }}" name="password"
+                                placeholder="Isikan password email diatas">
+                            @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
